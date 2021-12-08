@@ -11,7 +11,7 @@ node {
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/felipemeriga/DevOps-Example.git'
+      git 'https://github.com/vikas4cloud/DevOps-Example.git'
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.5.2' Maven tool must be configured
       // **       in the global configuration.           
@@ -27,23 +27,21 @@ node {
       // build docker image
       dockerImage = docker.build("devopsexample:${env.BUILD_NUMBER}")
     }
-   
-    stage('Deploy Docker Image'){
+   	  
+    stage('Deploy Docker Image and login'){
       
-      // deploy docker image to nexus
-		
       echo "Docker Image Tag Name: ${dockerImageTag}"
 	  
-	  sh "docker stop devopsexample"
-	  
-	  sh "docker rm devopsexample"
-	  
-	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
-	  
-	  // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-      //    dockerImage.push("${env.BUILD_NUMBER}")
-      //      dockerImage.push("latest")
-      //  }
-      
-    }
+        sh "docker images"
+        sh "docker login -u vickeyyvickey -p Hello@1223" // put PWD
+	
+}
+    stage('Docker push'){
+       // docker images | awk '{print $3}' | awk 'NR==2'
+	// sh "docker images | awk '{print $3}' | awk 'NR==2'"
+	//sh echo "Enter the docker lattest imageID"
+	//sh "read imageid"
+	   sh "docker tag 1f49185f0d6b  vickeyyvickey/myapplication" //must change the name and tag no
+ //       sh "docker push   vickeyyvickey/myapplication"
+  }
 }
