@@ -45,6 +45,6 @@ node {
         sh "docker push vin78/myapplication4"
 	    sh "docker images"
 	    sh "docker rm -f devopsexample"
-	    sh "docker run --name devopsexample -d -p 2222:2222 vin78//myapplication4:latest"
+	    sh "docker run --name devopsexample -d -p 2222:2222 vin78/myapplication4:latest"
   }
 }
