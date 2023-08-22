@@ -41,8 +41,8 @@ node {
 	// sh "docker images | awk '{print $3}' | awk 'NR==2'"
 	//sh echo "Enter the docker lattest imageID"
 	//sh "read imageid"
-	   sh "docker tag 9ca41738068c vin78/myapplication5" //must change your name and tag no
-        sh "docker push vin78/myapplication5"
+	   sh "docker tag  548b46cc8f07 vin78/myapplication6" //must change your name and tag no
+        sh "docker push vin78/myapplication6"
 	    // sh "docker images"
 	    // sh "docker rm -f devopsexample"
 	    // sh "docker run --name devopsexample -d -p 2222:2222 vin78/myapplication4:latest"
