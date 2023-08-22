@@ -43,5 +43,8 @@ node {
 	//sh "read imageid"
 	   sh "docker tag 740e87816c44 vin78/myapplication4" //must change your name and tag no
         sh "docker push vin78/myapplication4"
+	    sh "docker images"
+	    sh "docker rm -f devopsexample"
+	    sh "docker run --name devopsexample -d -p 2222:2222 vin78//myapplication4:latest"
   }
 }
